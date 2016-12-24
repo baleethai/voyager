@@ -17,12 +17,14 @@ Route::get('/', function () {
 
 
 Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
 
-
-Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+
+    // Products Routes
+    Route::group(['as' => 'voyager.'], function() {
+    	Route::resource('products', 'VoyagerProductsController');
+    });
+
 });
 
 Auth::routes();
